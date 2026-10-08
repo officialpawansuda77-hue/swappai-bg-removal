@@ -1,7 +1,8 @@
 # swappai background-removal service
 
-Free, self-hosted background removal for swappai (rembg + isnet-general-use).
-No per-image fees, no API shutdown risk, full-resolution PNG output.
+Free, self-hosted background removal for swappai (u2netp via raw onnxruntime).
+No per-image fees, no API shutdown risk, PNG output with transparency.
+Slim build (~250MB RAM) — fits Render's free tier.
 
 ## Deploy on Hugging Face Spaces (free, ~3 minutes)
 
