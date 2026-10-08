@@ -1,16 +1,1 @@
-FROM python:3.12-slim
-
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    BG_MODEL=isnet-general-use
-
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Pre-download the model at build time so the first request is fast.
-RUN python -c "from rembg import new_session; new_session('$BG_MODEL')"
-
-COPY app.py .
-EXPOSE 7860
-CMD ["sh", "-c", "uvicorn app:app --host 0.0.0.0 --port ${PORT:-7860}"]
+RlJPTSBweXRob246My4xMi1zbGltCgpFTlYgUFlUSE9ORE9OVFdSSVRFQllURUNPREU9MSBcCiAgICBQWVRIT05VTkJVRkZFUkVEPTEgXAogICAgQkdfTU9ERUw9dTJuZXRwIFwKICAgIE9NUF9OVU1fVEhSRUFEUz0xIFwKICAgIE9QRU5CTEFTX05VTV9USFJFQURTPTEKCldPUktESVIgL2FwcApDT1BZIHJlcXVpcmVtZW50cy50eHQgLgpSVU4gcGlwIGluc3RhbGwgLS1uby1jYWNoZS1kaXIgLXIgcmVxdWlyZW1lbnRzLnR4dAoKIyBQcmUtZG93bmxvYWQgdGhlIG1vZGVsIGF0IGJ1aWxkIHRpbWUgc28gdGhlIGZpcnN0IHJlcXVlc3QgaXMgZmFzdC4KUlVOIHB5dGhvbiAtYyAiZnJvbSByZW1iZyBpbXBvcnQgbmV3X3Nlc3Npb247IG5ld19zZXNzaW9uKCckQkdfTU9ERUwnKSIKCkNPUFkgYXBwLnB5IC4KRVhQT1NFIDc4NjAKIyBSZW5kZXIgYXNzaWducyB0aGUgcG9ydCB2aWEgJFBPUlQ7IGZhbGwgYmFjayB0byA3ODYwIGxvY2FsbHkuCkNNRCBbInNoIiwgIi1jIiwgInV2aWNvcm4gYXBwOmFwcCAtLWhvc3QgMC4wLjAuMCAtLXBvcnQgJHtQT1JUOi03ODYwfSJdCg==
